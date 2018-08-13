@@ -1,14 +1,21 @@
-/*A package definition is always
-the very first thing in a Go source file.
-*/
 package main
 
-//Package used by the program must be explicity
-//imported after the package definition
-import "fmt"
+import (
+	"fmt"
+	"os"
+)
 
-//The main() function is the entry point for all
-//Go programs. It must have this name.
 func main() {
-	fmt.Println("Hello world 🐹 !")
+	//An array with the program arguments, starting
+	//with the name fo the executable file and
+	//followed by any user-supplied arguments.
+	if len(os.Args) > 1 {
+		fmt.Println(os.Args[1])
+	} else {
+		//No argument passed.
+		fmt.Println("Hello world 🐹 !")
+	}
 }
+
+//run the program with:
+//$go run main.go "Some String"
