@@ -6,16 +6,20 @@ import (
 )
 
 func main() {
-	//An array with the program arguments, starting
-	//with the name fo the executable file and
-	//followed by any user-supplied arguments.
-	if len(os.Args) > 1 {
-		fmt.Println(os.Args[1])
+	//The := operator tells Go to automatically find out the data type
+	//for the value returned from os.Args.
+	args := os.Args
+
+	//Data type is declared prior to assigment.
+	//Given a value, we must determine how much space is needed to store
+	//this value for later reuse.
+	var message string
+
+	if len(args) > 1 {
+		message = args[1]
 	} else {
 		//No argument passed.
-		fmt.Println("Hello world 🐹 !")
+		message = "Hello world 🐹 !"
 	}
+	fmt.Println(message)
 }
-
-//run the program with:
-//$go run main.go "Some String"
