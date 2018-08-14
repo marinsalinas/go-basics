@@ -28,5 +28,13 @@ func main() {
 
 	//Add Greeting
 	hourOfDay := time.Now().Hour()
-	fmt.Println(greet.GetGreeting(hourOfDay))
+	greeting, err := greet.GetGreeting(hourOfDay)
+
+	//if error is not nil, then some error must have ocurred!
+	if err != nil {
+		fmt.Println(err.Error())
+		os.Exit(1) //Exit program with errors
+	}
+
+	fmt.Println(greeting)
 }
