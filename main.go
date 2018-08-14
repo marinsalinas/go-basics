@@ -3,6 +3,9 @@ package main
 import (
 	"fmt"
 	"os"
+	"time"
+
+	"github.com/marinsalinas/go-basics/greet"
 )
 
 func main() {
@@ -22,4 +25,8 @@ func main() {
 		message = "Hello world 🐹 !"
 	}
 	fmt.Println(message)
+
+	//Add Greeting
+	hourOfDay := time.Now().Hour()
+	fmt.Println(greet.GetGreeting(hourOfDay))
 }
