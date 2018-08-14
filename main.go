@@ -75,6 +75,8 @@ func main() {
 
 	gopher1 := gopher{name: "Marin", age: 24}
 	fmt.Println(gopher1.jump())
+	validateAge(gopher1)
+	fmt.Println(gopher1.isAdult)
 }
 
 func printLangs() {
@@ -128,8 +130,9 @@ func printEachLang(langs []string) {
 //Also must be placed outside the main function.
 type gopher struct {
 	//Properties are variables internal to the struct
-	name string
-	age  int
+	name    string
+	age     int
+	isAdult bool
 }
 
 //This is how we specify an explicit receiver for this function.
@@ -139,4 +142,11 @@ func (g gopher) jump() string {
 		return g.name + " can jump HIGH"
 	}
 	return g.name + " can still jump"
+}
+
+//passing structs by value
+//g is a copy of the original struct data.
+func validateAge(g gopher) {
+	//assings true to the copy of the data.
+	g.isAdult = g.age >= 18
 }
