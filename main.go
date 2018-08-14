@@ -70,6 +70,11 @@ func main() {
 
 	printLangsWithSlices()
 
+	langs := getLangs()
+	printEachLang(langs)
+
+	gopher1 := gopher{name: "Marin", age: 24}
+	fmt.Println(gopher1.jump())
 }
 
 func printLangs() {
@@ -82,8 +87,6 @@ func printLangs() {
 	langs[1] = "French"
 	langs[2] = "English"
 	//langs[3] = "Other Lang" raises an out of bound error.
-
-	fmt.Println(langs)
 }
 
 func printLangsWithSlices() {
@@ -100,6 +103,10 @@ func printLangsWithSlices() {
 	fmt.Println(langs)
 
 }
+func printLangsWithSliceLiterals() {
+	langs := getLangs()
+	fmt.Println(langs)
+}
 
 func getLangs() []string {
 	//Slice Literals (Array with initial values)
@@ -107,7 +114,29 @@ func getLangs() []string {
 	return langs
 }
 
-func printLangsWithSliceLiterals() {
-	langs := getLangs()
-	fmt.Println(langs)
+func printEachLang(langs []string) {
+	//The index for each element is returned on each run of the loop.
+	for index := range langs {
+		//We can now safety use the index to fetch each element from the slice.
+		fmt.Printf("language[%d] = %s\n", index, langs[index])
+	}
+}
+
+//A struct begins with the type keyword that
+// indicates a new type is about to be declared.
+//Then the name of the struct and ends with the 'struct' primitive type.
+//Also must be placed outside the main function.
+type gopher struct {
+	//Properties are variables internal to the struct
+	name string
+	age  int
+}
+
+//This is how we specify an explicit receiver for this function.
+func (g gopher) jump() string {
+	//we can access to gopher properties.
+	if g.age < 65 {
+		return g.name + " can jump HIGH"
+	}
+	return g.name + " can still jump"
 }
