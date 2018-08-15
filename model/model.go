@@ -1,9 +1,9 @@
 package model
 
 type jumper interface {
-	//Method expected to be present in all
-	//types that implement this interface
-	Jump() string //Capitalized alows us to use the method outside the package.
+	//If you want to get access to this method outside the package
+	//It must be Capitalized.
+	Jump() string
 }
 
 //A struct begins with the type keyword that
