@@ -6,11 +6,11 @@ import (
 	"time"
 
 	"github.com/marinsalinas/go-basics/greet"
-	"github.com/marinsalinas/go-basics/models"
+	"github.com/marinsalinas/go-basics/model"
 )
 
 func main() {
-	jumpers := models.GetList()
+	jumpers := model.GetList()
 	for i := range jumpers {
 		//Print with format.
 		fmt.Printf("%+v\n", jumpers[i])

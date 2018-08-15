@@ -1,4 +1,4 @@
-package models
+package model
 
 type jumper interface {
 	//Method expected to be present in all
