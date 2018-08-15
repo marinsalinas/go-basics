@@ -6,9 +6,18 @@ import (
 	"time"
 
 	"github.com/marinsalinas/go-basics/greet"
+	"github.com/marinsalinas/go-basics/models"
 )
 
 func main() {
+	jumpers := models.GetList()
+	for i := range jumpers {
+		//Print with format.
+		fmt.Printf("%+v\n", jumpers[i])
+	}
+}
+
+func oldStuff() {
 	//The := operator tells Go to automatically find out the data type
 	//for the value returned from os.Args.
 	args := os.Args
@@ -72,11 +81,6 @@ func main() {
 
 	langs := getLangs()
 	printEachLang(langs)
-
-	gopher1 := &gopher{name: "Marin", age: 24}
-	fmt.Println(gopher1.jump())
-	validateAge(gopher1)
-	fmt.Println(gopher1.isAdult)
 }
 
 func printLangs() {
@@ -122,61 +126,6 @@ func printEachLang(langs []string) {
 		//We can now safety use the index to fetch each element from the slice.
 		fmt.Printf("language[%d] = %s\n", index, langs[index])
 	}
-}
-
-type jumper interface {
-	//Method expected to be present in all
-	//types that implement this interface
-	jump() string
-}
-
-//A struct begins with the type keyword that
-// indicates a new type is about to be declared.
-//Then the name of the struct and ends with the 'struct' primitive type.
-//Also must be placed outside the main function.
-type gopher struct {
-	//Properties are variables internal to the struct
-	name    string
-	age     int
-	isAdult bool
-}
-
-//This is how we specify an explicit receiver for this function.
-func (g gopher) jump() string {
-	//we can access to gopher properties.
-	if g.age < 65 {
-		return g.name + " can jump HIGH"
-	}
-	return g.name + " can still jump"
-}
-
-//The horse struct implements jumper interface specifying
-// jump method.
-type horse struct {
-	name   string
-	weight float64
-}
-
-func (h horse) jump() string {
-	if h.weight > 2500 {
-		return "It's too heavy, can't jump"
-	}
-	return "I will jump!"
-}
-
-func getList() []jumper {
-	phil := &gopher{name: "Phil", age: 30}
-	noodles := &gopher{name: "Noodles", age: 90}
-	gil := &horse{name: "Gil", weight: 2400.40}
-	return []jumper{phil, noodles, gil}
-}
-
-//passing structs by reference
-//g is a memory reference of the original struct data.
-// * indicates a pointer to the original value.
-func validateAge(g *gopher) {
-	//assings true to the copy of the data.
-	g.isAdult = g.age >= 18
 }
 
 // func main() {

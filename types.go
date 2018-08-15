@@ -9,7 +9,11 @@ func printDataTypes() {
 	isValid := true                       //bool (true, false)
 	f := 3.1416                           //float
 	as := []string{"un", "deux", "trois"} // array of string
+	ms := map[string]string{
+		"key":  "value",
+		"key2": "value2",
+	} //maps of string
 
 	//Print values
-	fmt.Print(i, st, isValid, f, as)
+	fmt.Print(i, st, isValid, f, as, ms)
 }
